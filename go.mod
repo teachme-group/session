@@ -2,15 +2,12 @@ module github.com/teachme-group/session
 
 go 1.23.3
 
-replace github.com/teachme-group/session/pkg => ./pkg
-
 require (
 	github.com/Markuysa/pkg v1.2.14
 	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1
 	github.com/prometheus/client_golang v1.20.5
 	github.com/redis/go-redis/v9 v9.7.0
-	github.com/teachme-group/session/pkg v0.0.0-00010101000000-000000000000
 	google.golang.org/grpc v1.69.0
 	google.golang.org/protobuf v1.35.2
 )
