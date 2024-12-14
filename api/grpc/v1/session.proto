@@ -3,33 +3,43 @@ syntax = "proto3";
 package session.v1;
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 option go_package = "/v1";
 
 service SessionService {
-  rpc ClientAuth(ClientAuthRequest) returns (ClientAuthResponse) {}
-  rpc ClientSetSession(ClientSetSessionRequest) returns (ClientSetSessionResponse) {}
+  rpc ClientAuth(ClientAuthRequest) returns (ClientAuthResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth"
+      body: "*"
+    };
+  }
+  rpc ClientSetSession(ClientSetSessionRequest) returns (ClientSetSessionResponse) {
+    option (google.api.http) = {
+      post: "/v1/session"
+      body: "*"
+    };
+  }
 }
 
 message ClientSetSessionRequest {
-  string client_id = 1;
+  string client_id = 1 [json_name = "client_id"];
 }
 
 message ClientSetSessionResponse {
-  string access_token = 1;
+  string access_token = 1 [json_name = "access_token"];
 }
 
 message ClientAuthRequest {
-  string client_secret = 2;
+  string client_secret = 1 [json_name = "client_secret"];
 }
 
 message ClientAuthResponse {
-  string id = 1;
-  string user_id = 2;
-  string access_token = 3;
-  string refresh_token = 4;
-  google.protobuf.Timestamp signed_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
-  // miliseconds
-  int64 expire_in = 7;
+  string id = 1 [json_name = "id"];
+  string user_id = 2 [json_name = "user_id"];
+  string access_token = 3 [json_name = "access_token"];
+  string refresh_token = 4 [json_name = "refresh_token"];
+  google.protobuf.Timestamp signed_at = 5 [json_name = "signed_at"];
+  google.protobuf.Timestamp updated_at = 6 [json_name = "updated_at"];
+  int64 expire_in = 7 [json_name = "expire_in"];
 }

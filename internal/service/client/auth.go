@@ -17,7 +17,7 @@ func (s *service) CreateSession(ctx context.Context, req *v1.ClientSetSessionReq
 	session := &v1.Session{
 		Id:           uuid.NewString(),
 		UserId:       req.ClientId,
-		ExpireIn:     s.cfg.SessionExpireTime.Milliseconds(),
+		ExpireIn:     int64(s.cfg.SessionExpireTime),
 		AccessToken:  uuid.NewString(),
 		RefreshToken: uuid.NewString(),
 		SignedAt:     timestamppb.Now(),
