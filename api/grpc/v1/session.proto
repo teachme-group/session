@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package session.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "/v1";
+
+service SessionService {
+  rpc ClientAuth(ClientAuthRequest) returns (ClientAuthResponse) {}
+  rpc ClientSetSession(ClientSetSessionRequest) returns (ClientSetSessionResponse) {}
+}
+
+message ClientSetSessionRequest {
+  string client_id = 1;
+}
+
+message ClientSetSessionResponse {
+  string access_token = 1;
+}
+
+message ClientAuthRequest {
+  string client_secret = 2;
+}
+
+message ClientAuthResponse {
+  string id = 1;
+  string user_id = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+  google.protobuf.Timestamp signed_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  // miliseconds
+  int64 expire_in = 7;
+}
