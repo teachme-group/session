@@ -3,7 +3,7 @@ module github.com/teachme-group/session/pkg
 go 1.23.3
 
 require (
-	github.com/Markuysa/pkg v1.2.13
+	github.com/Markuysa/pkg v1.2.14
 	google.golang.org/grpc v1.69.0
 	google.golang.org/protobuf v1.35.2
 )
