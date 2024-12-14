@@ -5,9 +5,11 @@ go 1.23.3
 require (
 	github.com/Markuysa/pkg v1.2.14
 	github.com/google/uuid v1.6.0
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.24.0
 	github.com/joho/godotenv v1.5.1
 	github.com/prometheus/client_golang v1.20.5
 	github.com/redis/go-redis/v9 v9.7.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20241118233622-e639e219e697
 	google.golang.org/grpc v1.69.0
 	google.golang.org/protobuf v1.35.2
 )
