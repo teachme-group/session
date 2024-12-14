@@ -1,4 +1,4 @@
-module pkg
+module github.com/teachme-group/session/pkg
 
 go 1.23.3
 
