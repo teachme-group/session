@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: session
+  template:
+    metadata:
+      labels:
+        app: session
+    spec:
+      containers:
+        - name: session
+          image: markuysa/session:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: CONFIG_PATH
+              value: "/internal/config/config.yaml"
+          volumeMounts:
+            - mountPath: /internal/config
+              name: config-data
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+      volumes:
+        - name: config-data
+          configMap:
+            defaultMode: 420
+            name: session-configmap
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: session
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: session
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: session
+  namespace: default
+spec:
+  selector:
+    app: session
+  ports:
+    - name: grpc
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+
+    - name: metrics
+      protocol: TCP
+      targetPort: 9000
+      port: 9000
