@@ -3,6 +3,8 @@ github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob
 github.com/HdrHistogram/hdrhistogram-go v1.1.2/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/Markuysa/pkg v1.3.10 h1:3rEIyu66Fwdf+nfCs3bow605j6O4gBltv0CstZH+s+o=
 github.com/Markuysa/pkg v1.3.10/go.mod h1:39vlkxhTsyF6odnIx9QB0eDtNKm3QWF0qMMuaf3nRGw=
+github.com/Markuysa/pkg v1.3.12 h1:yz8jDxa7xW5IEo1Tl9WuQkxMUo7gyq3tbRAdnCqRtxA=
+github.com/Markuysa/pkg v1.3.12/go.mod h1:39vlkxhTsyF6odnIx9QB0eDtNKm3QWF0qMMuaf3nRGw=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
